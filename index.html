@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">EzyBuy</a>
+
+        <div class="search-container">
+            <i class='bx bx-search search-icon'></i>
+            <input type="text" id="search-bar" placeholder="Search " onkeyup="showSuggestions()">
+            <div id="suggestions"></div>
+        </div>
+        <div class="header-icons">
+            <div id="wishlist-icon">
+                <i class='bx bxs-heart'></i>
+                <span class="wishlist-item-count"></span>
+            </div>
+            <div id="cart-icon">
+                <i class='bx bxs-shopping-bags'></i>
+                <span class="cart-item-count"></span>
+            </div>
+            <div id="orders-icon">
+                <i class='bx bxs-receipt'></i>
+                <span class="orders-item-count"></span>
+            </div>
+            <div id="chat-toggle" class="chat-toggle">
+                <i class='bx bxs-message'></i>
+            </div>
+
+        </div>
+    </header>
+
+    <div id="product-page-body">
+        <div id="product-top-container">
+            <div id="product-top-wrapper">
+                <div id="product-top-text-section">
+                    <h1>Latest Trending</h1>
+                    <h2> Get The Best Of EzyBuy</h2>
+                    <p>
+                        Making Shopping Effortless and Exciting!
+                        Find everything you need at unbeatable prices, delivered with speed and convenience.
+                        Smart choices, endless savings—shop easy, shop EzyBuy!
+                    </p>
+                    <button class="blue-button">
+                        Shop Now
+                    </button>
+                </div>
+                <div id="product-top-image-section">
+                    <img src="images/all.png" alt="Large Light Beige Headphones">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-category-container">
+        <div id="product-category-text">
+            <span class="blue-line"></span>
+            <span class="section-category-text">Categories</span>
+        </div>
+        <div id="product-category-wrapper">
+            <div class="product-category">
+                <div class="product-category-image-section">
+                    <img src="/images/all.png" alt="Image Collection Containing All Categories">
+                </div>
+                <div class="product-category-desc-section">
+                    <span class="product-category-type">
+                        All
+                    </span>
+                    <span class="product-category-number">
+                        60 items
+                    </span>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <div class="product-category-image-section">
+                    <img src="images/headphone.png" alt="Image Collection Containing Headphones">
+                </div>
+                <div class="product-category-desc-section">
+                    <span class="product-category-type">
+                        Headphones
+                    </span>
+                    <span class="product-category-number">
+                        12 items
+                    </span>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <div class="product-category-image-section">
+                    <img src="images/watch.png" alt="Image Collection Containing Smartwatch">
+                </div>
+                <div class="product-category-desc-section">
+                    <span class="product-category-type">
+                        Smartwatch
+                    </span>
+                    <span class="product-category-number">
+                        12 items
+                    </span>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <div class="product-category-image-section">
+                    <img src="images/phone.png" alt="Image Collection Containing Mobile">
+                </div>
+                <div class="product-category-desc-section">
+                    <span class="product-category-type">
+                        Mobile
+                    </span>
+                    <span class="product-category-number">
+                        12 items
+                    </span>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <div class="product-category-image-section">
+                    <img src="images/ipad.png" alt="Image Collection Containing Tablet">
+                </div>
+                <div class="product-category-desc-section">
+                    <span class="product-category-type">
+                        Tablet
+                    </span>
+                    <span class="product-category-number">
+                        12 items
+                    </span>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <div class="product-category-image-section">
+                    <img src="images/laptop.png" alt="Image Collection Containing Laptop">
+                </div>
+                <div class="product-category-desc-section">
+                    <span class="product-category-type">
+                        Laptop
+                    </span>
+                    <span class="product-category-number">
+                        12 items
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-header">
+            <h3>Live Chat </h3>
+            <span id="whatsapp-icon" title="Chat with us on WhatsApp">
+                <i class='bx bxl-whatsapp'></i>
+            </span>
+            <span id="chat-close" class="chat-close"><i class='bx bx-x-circle'></i></span>
+        </div>
+
+        <div class="chat-body" id="chat-body">
+            <!-- Chat messages -->
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type or Chat on Whatsapp..." />
+            <button id="chat-send">Send</button>
+        </div>
+    </div>
+
+    <div class="orders" id="orders">
+        <h2 class="orders-title">Orders</h2>
+        <div class="orders-info">
+            <p id="order-date"></p>
+            <p id="order-time"></p>
+        </div>
+        <div class="orders-list"></div>
+        <i class='bx bx-x-circle' id="orders-close"></i>
+    </div>
+
+
+    <div class="cart">
+        <h2 class="cart-title">Your Cart</h2>
+        <div class="cart-content">
+            <!-- <div class="cart-box">
+                <img src="/images/blender.png" class="cart-img">
+                <div class="cart-detail">
+                    <h2 class="cart-product-title">Try Product</h2>
+                    <span class="cart-price">$100</span>
+                    <div class="cart-quantity">
+                        <button id="decrement">-</button>
+                        <span class="number">1</span>
+                        <button id="increment">+</button>
+                    </div>
+                </div>
+                <i class='bx bx-trash' ></i>
+            </div> -->
+        </div>
+
+        <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+        </div>
+        <button class="btn-buy">Buy Now</button>
+        <div id="cart-alert" class="cart-alert">
+            <span class="close-btn" onclick="closeAlert()"><i class='bx bx-x'></i></span>
+            <span id="cart-alert-message"></span>
+        </div>
+        <i class='bx bx-x-circle' id="cart-close"></i>
+    </div>
+
+    <div class="wishlist" id="wishlist">
+        <h2 class="wishlist-title">Your Wishlist</h2>
+        <div class="wishlist-content">
+            <!-- Wishlist items -->
+        </div>
+        <i class='bx bx-x-circle' id="wishlist-close"></i>
+    </div>
+
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Select Payment Method</h2>
+            <div class="payment-options">
+                <label for="payment-method-select">Payment Method:</label>
+                <select id="payment-method-select">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bank-transfer">Bank Transfer</option>
+                </select>
+            </div>
+            <button id="proceed-buy" class="btn-buy">Proceed to Buy</button>
+        </div>
+
+    </div>
+
+    <div id="product-text">
+        <span class="side-line"></span>
+        <span class="section-text"> All Products</span>
+    </div>
+
+    <div id="slider1" class="slider-container">
+        <div class="preview-btn">
+            <i class='bx bx-skip-previous-circle'></i>
+        </div>
+        <div class="product-content"></div>
+        <div class="next-btn">
+            <i class='bx bx-skip-next-circle'></i>
+        </div>
+    </div>
+
+    <div id="product-text">
+        <span class="side-line"></span>
+        <span class="section-text"> Laptops</span>
+    </div>
+
+    <div id="slider2" class="slider-container">
+        <div class="preview-btn">
+            <i class='bx bx-skip-previous-circle'></i>
+        </div>
+        <div class="product-content"></div>
+        <div class="next-btn">
+            <i class='bx bx-skip-next-circle'></i>
+        </div>
+    </div>
+
+    <div id="product-text">
+        <span class="side-line"></span>
+        <span class="section-text">Mobiles</span>
+    </div>
+
+    <div id="slider3" class="slider-container">
+        <div class="preview-btn">
+            <i class='bx bx-skip-previous-circle'></i>
+        </div>
+        <div class="product-content"></div>
+        <div class="next-btn">
+            <i class='bx bx-skip-next-circle'></i>
+        </div>
+    </div>
+
+    <div id="product-text">
+        <span class="side-line"></span>
+        <span class="section-text">Headphones</span>
+    </div>
+
+    <div id="slider4" class="slider-container">
+        <div class="preview-btn">
+            <i class='bx bx-skip-previous-circle'></i>
+        </div>
+        <div class="product-content"></div>
+        <div class="next-btn">
+            <i class='bx bx-skip-next-circle'></i>
+        </div>
+    </div>
+
+    <div id="product-text">
+        <span class="side-line"></span>
+        <span class="section-text">Watches</span>
+    </div>
+
+    <div id="slider5" class="slider-container">
+        <div class="preview-btn">
+            <i class='bx bx-skip-previous-circle'></i>
+        </div>
+        <div class="product-content"></div>
+        <div class="next-btn">
+            <i class='bx bx-skip-next-circle'></i>
+        </div>
+    </div>
+
+    <div id="product-text">
+        <span class="side-line"></span>
+        <span class="section-text">Tablets</span>
+    </div>
+
+    <div id="slider6" class="slider-container">
+        <div class="preview-btn">
+            <i class='bx bx-skip-previous-circle'></i>
+        </div>
+        <div class="product-content"></div>
+        <div class="next-btn">
+            <i class='bx bx-skip-next-circle'></i>
+        </div>
+    </div>
+
+
+    <footer>
+        <div id="footer-bottom">
+            <p>
+                &copy; <span id="year"></span> EzyBuy. All Rights Reserved.
+                <a href="#">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+    <script>
+        document.getElementById("whatsapp-icon").addEventListener("click", function () {
+            const whatsappNumber = "7303938001"; // Replace with your actual number
+            const message = "Hello, I need assistance.";
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp link in a new tab
+            window.open(whatsappLink, "_blank");
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const header = document.querySelector(".header");
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 50) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
