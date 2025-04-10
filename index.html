@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping App</title>
+    <title>EzyBuy</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
@@ -13,58 +13,58 @@
 
     <header class="header">
         <a href="#" class="logo">EzyBuy</a>
-      
+
         <div class="search-container">
-          <i class='bx bx-search search-icon'></i>
-          <input type="text" id="search-bar" placeholder="Search " onkeyup="showSuggestions()">
-          <div id="suggestions"></div>
+            <i class='bx bx-search search-icon'></i>
+            <input type="text" id="search-bar" placeholder="Search " onkeyup="showSuggestions()">
+            <div id="suggestions"></div>
         </div>
-      
+
         <!-- Desktop Icons -->
         <div class="header-icons">
-          <div id="wishlist-icon">
-            <i class='bx bxs-heart'></i>
-            <span class="wishlist-item-count"></span>
-          </div>
-          <div id="cart-icon">
-            <i class='bx bxs-shopping-bags'></i>
-            <span class="cart-item-count"></span>
-          </div>
-          <div id="orders-icon">
-            <i class='bx bxs-receipt'></i>
-            <span class="orders-item-count"></span>
-          </div>
-          <div id="chat-toggle" class="chat-toggle">
-            <i class='bx bxs-message'></i>
-          </div>
+            <div id="wishlist-icon">
+                <i class='bx bxs-heart'></i>
+                <span class="wishlist-item-count"></span>
+            </div>
+            <div id="cart-icon">
+                <i class='bx bxs-shopping-bags'></i>
+                <span class="cart-item-count"></span>
+            </div>
+            <div id="orders-icon">
+                <i class='bx bxs-receipt'></i>
+                <span class="orders-item-count"></span>
+            </div>
+            <div id="chat-toggle" class="chat-toggle">
+                <i class='bx bxs-message'></i>
+            </div>
         </div>
-      
+
         <!-- Menu icon (visible on small screens) -->
         <div class="menu-icon" onclick="toggleMenu()">
-          <i class='bx bx-menu'></i>
+            <i class='bx bx-menu'></i>
         </div>
-      
+
         <!-- Mobile Dropdown Menu -->
         <div class="dropdown-menu">
-            <div class="close-btn" onclick="toggleMenu()"><i class='bx bx-x-circle' ></i></div>
-          <div id="wishlist-icon-mobile">
-            <i class='bx bxs-heart'></i>
-            <span class="wishlist-item-count"></span>
-          </div>
-          <div id="cart-icon-mobile">
-            <i class='bx bxs-shopping-bags'></i>
-            <span class="cart-item-count"></span>
-          </div>
-          <div id="orders-icon-mobile">
-            <i class='bx bxs-receipt'></i>
-            <span class="orders-item-count"></span>
-          </div>
-          <div id="chat-toggle-mobile" class="chat-toggle">
-            <i class='bx bxs-message'></i>
-          </div>
+            <div class="close-btn" onclick="toggleMenu()"><i class='bx bx-x-circle'></i></div>
+            <div id="wishlist-icon-mobile">
+                <i class='bx bxs-heart'></i>
+                <span class="wishlist-item-count"></span>
+            </div>
+            <div id="cart-icon-mobile">
+                <i class='bx bxs-shopping-bags'></i>
+                <span class="cart-item-count"></span>
+            </div>
+            <div id="orders-icon-mobile">
+                <i class='bx bxs-receipt'></i>
+                <span class="orders-item-count"></span>
+            </div>
+            <div id="chat-toggle-mobile" class="chat-toggle">
+                <i class='bx bxs-message'></i>
+            </div>
         </div>
-      </header>
-      
+    </header>
+
 
     <div id="product-page-body">
         <div id="product-top-container">
@@ -96,7 +96,7 @@
         <div id="product-category-wrapper">
             <div class="product-category">
                 <div class="product-category-image-section">
-                    <img src="/images/all.png" alt="Image Collection Containing All Categories">
+                    <img src="images/all.png" alt="Image Collection Containing All Categories">
                 </div>
                 <div class="product-category-desc-section">
                     <span class="product-category-type">
@@ -362,7 +362,7 @@
         <div id="footer-bottom">
             <p>
                 &copy; <span id="year"></span> EzyBuy. All Rights Reserved.
-                <a href="#">Privacy Policy</a>
+                <a href="privacy_policy.html">Privacy Policy</a>
             </p>
         </div>
     </footer>
@@ -402,9 +402,27 @@
         document.getElementById("chat-toggle-mobile").addEventListener("click", () => {
             document.getElementById("chat-toggle").click();
         });
+        // Toggle the mobile dropdown menu
         function toggleMenu() {
             document.querySelector(".dropdown-menu").classList.toggle("show");
         }
+
+        // Close the mobile dropdown menu when the X button is clicked
+        function closeMenu() {
+            document.querySelector(".dropdown-menu").classList.remove("show");
+        }
+
+        // Close the mobile dropdown menu when clicking outside
+        window.addEventListener("click", function (event) {
+            const dropdownMenu = document.querySelector(".dropdown-menu");
+            const menuIcon = document.querySelector(".menu-icon");
+
+            // If the click is outside the dropdown or the menu icon, close the dropdown
+            if (!dropdownMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+                dropdownMenu.classList.remove("show");
+            }
+        });
+
     </script>
 
 </body>
