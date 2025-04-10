@@ -207,7 +207,6 @@ function populateSlider(sliderId, category) {
                 <img src="${product.image}" alt="${product.title}">
             </div>
             <h2 class="product-title">${product.title}</h2>
-            <h2 class="delivery-time">🕑20 - 45min</h2>
             <div class="price-and-cart">
                 <span class="price">${product.price}</span>
                 <i class='bx bxs-cart-add' data-tooltip="Add to Cart"></i>

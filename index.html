@@ -13,31 +13,58 @@
 
     <header class="header">
         <a href="#" class="logo">EzyBuy</a>
-
+      
         <div class="search-container">
-            <i class='bx bx-search search-icon'></i>
-            <input type="text" id="search-bar" placeholder="Search " onkeyup="showSuggestions()">
-            <div id="suggestions"></div>
+          <i class='bx bx-search search-icon'></i>
+          <input type="text" id="search-bar" placeholder="Search " onkeyup="showSuggestions()">
+          <div id="suggestions"></div>
         </div>
+      
+        <!-- Desktop Icons -->
         <div class="header-icons">
-            <div id="wishlist-icon">
-                <i class='bx bxs-heart'></i>
-                <span class="wishlist-item-count"></span>
-            </div>
-            <div id="cart-icon">
-                <i class='bx bxs-shopping-bags'></i>
-                <span class="cart-item-count"></span>
-            </div>
-            <div id="orders-icon">
-                <i class='bx bxs-receipt'></i>
-                <span class="orders-item-count"></span>
-            </div>
-            <div id="chat-toggle" class="chat-toggle">
-                <i class='bx bxs-message'></i>
-            </div>
-
+          <div id="wishlist-icon">
+            <i class='bx bxs-heart'></i>
+            <span class="wishlist-item-count"></span>
+          </div>
+          <div id="cart-icon">
+            <i class='bx bxs-shopping-bags'></i>
+            <span class="cart-item-count"></span>
+          </div>
+          <div id="orders-icon">
+            <i class='bx bxs-receipt'></i>
+            <span class="orders-item-count"></span>
+          </div>
+          <div id="chat-toggle" class="chat-toggle">
+            <i class='bx bxs-message'></i>
+          </div>
         </div>
-    </header>
+      
+        <!-- Menu icon (visible on small screens) -->
+        <div class="menu-icon" onclick="toggleMenu()">
+          <i class='bx bx-menu'></i>
+        </div>
+      
+        <!-- Mobile Dropdown Menu -->
+        <div class="dropdown-menu">
+            <div class="close-btn" onclick="toggleMenu()"><i class='bx bx-x-circle' ></i></div>
+          <div id="wishlist-icon-mobile">
+            <i class='bx bxs-heart'></i>
+            <span class="wishlist-item-count"></span>
+          </div>
+          <div id="cart-icon-mobile">
+            <i class='bx bxs-shopping-bags'></i>
+            <span class="cart-item-count"></span>
+          </div>
+          <div id="orders-icon-mobile">
+            <i class='bx bxs-receipt'></i>
+            <span class="orders-item-count"></span>
+          </div>
+          <div id="chat-toggle-mobile" class="chat-toggle">
+            <i class='bx bxs-message'></i>
+          </div>
+        </div>
+      </header>
+      
 
     <div id="product-page-body">
         <div id="product-top-container">
@@ -238,94 +265,95 @@
         </div>
 
     </div>
-
-    <div id="product-text">
-        <span class="side-line"></span>
-        <span class="section-text"> All Products</span>
-    </div>
-
-    <div id="slider1" class="slider-container">
-        <div class="preview-btn">
-            <i class='bx bx-skip-previous-circle'></i>
+    <div class="sliders">
+        <div id="product-text">
+            <span class="side-line"></span>
+            <span class="section-text"> All Products</span>
         </div>
-        <div class="product-content"></div>
-        <div class="next-btn">
-            <i class='bx bx-skip-next-circle'></i>
-        </div>
-    </div>
 
-    <div id="product-text">
-        <span class="side-line"></span>
-        <span class="section-text"> Laptops</span>
-    </div>
-
-    <div id="slider2" class="slider-container">
-        <div class="preview-btn">
-            <i class='bx bx-skip-previous-circle'></i>
+        <div id="slider1" class="slider-container">
+            <div class="preview-btn">
+                <i class='bx bx-skip-previous-circle'></i>
+            </div>
+            <div class="product-content"></div>
+            <div class="next-btn">
+                <i class='bx bx-skip-next-circle'></i>
+            </div>
         </div>
-        <div class="product-content"></div>
-        <div class="next-btn">
-            <i class='bx bx-skip-next-circle'></i>
-        </div>
-    </div>
 
-    <div id="product-text">
-        <span class="side-line"></span>
-        <span class="section-text">Mobiles</span>
-    </div>
-
-    <div id="slider3" class="slider-container">
-        <div class="preview-btn">
-            <i class='bx bx-skip-previous-circle'></i>
+        <div id="product-text">
+            <span class="side-line"></span>
+            <span class="section-text"> Laptops</span>
         </div>
-        <div class="product-content"></div>
-        <div class="next-btn">
-            <i class='bx bx-skip-next-circle'></i>
-        </div>
-    </div>
 
-    <div id="product-text">
-        <span class="side-line"></span>
-        <span class="section-text">Headphones</span>
-    </div>
-
-    <div id="slider4" class="slider-container">
-        <div class="preview-btn">
-            <i class='bx bx-skip-previous-circle'></i>
+        <div id="slider2" class="slider-container">
+            <div class="preview-btn">
+                <i class='bx bx-skip-previous-circle'></i>
+            </div>
+            <div class="product-content"></div>
+            <div class="next-btn">
+                <i class='bx bx-skip-next-circle'></i>
+            </div>
         </div>
-        <div class="product-content"></div>
-        <div class="next-btn">
-            <i class='bx bx-skip-next-circle'></i>
-        </div>
-    </div>
 
-    <div id="product-text">
-        <span class="side-line"></span>
-        <span class="section-text">Watches</span>
-    </div>
-
-    <div id="slider5" class="slider-container">
-        <div class="preview-btn">
-            <i class='bx bx-skip-previous-circle'></i>
+        <div id="product-text">
+            <span class="side-line"></span>
+            <span class="section-text">Mobiles</span>
         </div>
-        <div class="product-content"></div>
-        <div class="next-btn">
-            <i class='bx bx-skip-next-circle'></i>
-        </div>
-    </div>
 
-    <div id="product-text">
-        <span class="side-line"></span>
-        <span class="section-text">Tablets</span>
-    </div>
-
-    <div id="slider6" class="slider-container">
-        <div class="preview-btn">
-            <i class='bx bx-skip-previous-circle'></i>
+        <div id="slider3" class="slider-container">
+            <div class="preview-btn">
+                <i class='bx bx-skip-previous-circle'></i>
+            </div>
+            <div class="product-content"></div>
+            <div class="next-btn">
+                <i class='bx bx-skip-next-circle'></i>
+            </div>
         </div>
-        <div class="product-content"></div>
-        <div class="next-btn">
-            <i class='bx bx-skip-next-circle'></i>
+
+        <div id="product-text">
+            <span class="side-line"></span>
+            <span class="section-text">Headphones</span>
+        </div>
+
+        <div id="slider4" class="slider-container">
+            <div class="preview-btn">
+                <i class='bx bx-skip-previous-circle'></i>
+            </div>
+            <div class="product-content"></div>
+            <div class="next-btn">
+                <i class='bx bx-skip-next-circle'></i>
+            </div>
+        </div>
+
+        <div id="product-text">
+            <span class="side-line"></span>
+            <span class="section-text">Watches</span>
+        </div>
+
+        <div id="slider5" class="slider-container">
+            <div class="preview-btn">
+                <i class='bx bx-skip-previous-circle'></i>
+            </div>
+            <div class="product-content"></div>
+            <div class="next-btn">
+                <i class='bx bx-skip-next-circle'></i>
+            </div>
+        </div>
+
+        <div id="product-text">
+            <span class="side-line"></span>
+            <span class="section-text">Tablets</span>
+        </div>
+
+        <div id="slider6" class="slider-container">
+            <div class="preview-btn">
+                <i class='bx bx-skip-previous-circle'></i>
+            </div>
+            <div class="product-content"></div>
+            <div class="next-btn">
+                <i class='bx bx-skip-next-circle'></i>
+            </div>
         </div>
     </div>
 
@@ -361,6 +389,22 @@
                 }
             });
         });
+
+        document.getElementById("wishlist-icon-mobile").addEventListener("click", () => {
+            document.getElementById("wishlist-icon").click();
+        });
+        document.getElementById("cart-icon-mobile").addEventListener("click", () => {
+            document.getElementById("cart-icon").click();
+        });
+        document.getElementById("orders-icon-mobile").addEventListener("click", () => {
+            document.getElementById("orders-icon").click();
+        });
+        document.getElementById("chat-toggle-mobile").addEventListener("click", () => {
+            document.getElementById("chat-toggle").click();
+        });
+        function toggleMenu() {
+            document.querySelector(".dropdown-menu").classList.toggle("show");
+        }
     </script>
 
 </body>
