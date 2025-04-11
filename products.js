@@ -182,18 +182,18 @@ slider2: [
       ],
 
         slider6: [
-          { image: "./images/T1.png", title: "T1", price: "₹60" },
-          { image: "./images/T2.png", title: "T2", price: "₹70" },
-          { image: "./images/T3.png", title: "T3", price: "₹80" },
-          { image: "./images/T4.png", title: "T4", price: "₹90" },
-          { image: "./images/T5.png", title: "T5", price: "₹100" },
-          { image: "./images/T6.png", title: "T6", price: "₹110" },
-          { image: "./images/T7.png", title: "T7", price: "₹120" },
-          { image: "./images/T8.png", title: "T8", price: "₹130" },
-          { image: "./images/T9.png", title: "T9", price: "₹140" },
-          { image: "./images/T10.png", title: "T10", price: "₹150" },
-          { image: "./images/T11.png", title: "T11", price: "₹160" },
-          { image: "./images/T12.png", title: "T12", price: "₹170" }
+          { image: "./images/T1.png", title: "T1", price: "$60" },
+          { image: "./images/T2.png", title: "T2", price: "$70" },
+          { image: "./images/T3.png", title: "T3", price: "$80" },
+          { image: "./images/T4.png", title: "T4", price: "$90" },
+          { image: "./images/T5.png", title: "T5", price: "$100" },
+          { image: "./images/T6.png", title: "T6", price: "$110" },
+          { image: "./images/T7.png", title: "T7", price: "$120" },
+          { image: "./images/T8.png", title: "T8", price: "$130" },
+          { image: "./images/T9.png", title: "T9", price: "$140" },
+          { image: "./images/T10.png", title: "T10", price: "$150" },
+          { image: "./images/T11.png", title: "T11", price: "$160" },
+          { image: "./images/T12.png", title: "T12", price: "$170" }
         ]
 };
 

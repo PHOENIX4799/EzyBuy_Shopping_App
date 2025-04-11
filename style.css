@@ -1234,6 +1234,18 @@ body {
     opacity: 1;
 }
 
+/* By default, show it */
+#chat-toggle-mobile {
+    display: block;
+  }
+  
+  /* Hide on large screens (e.g., 768px and up) */
+  @media (min-width: 768px) {
+    #chat-toggle-mobile {
+      display: none;
+    }
+  }
+  
 
 .chat-header h3 {
     margin: 0;
@@ -1320,7 +1332,7 @@ footer {
 
 #footer-bottom a {
     text-decoration: none;
-    color: #02094b;
+    color: #0a157e;
     font-weight: normal;
     transition: 0.3s ease-in-out;
 }
@@ -1368,6 +1380,10 @@ footer {
     .price-and-cart i {
         font-size: 20px;
     }
+    .chat-toggle2{
+        display: none;
+    }
+    
 }
 
 @media screen and (max-width: 768px) {
@@ -1523,8 +1539,29 @@ footer {
     .next-btn {
         margin: 2px;
     }
+    .splash-logo {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
+        background: linear-gradient(90deg, #464545, #c7c5c3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text; 
+        animation: popScale2 1.2s ease, finalTextEffect 2s ease 3.5s forwards; /* Add finalTextEffect after popScale */
+    }
+    @keyframes popScale2 {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(0.9);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0.6);
+        }
+    }
 }
-
 
 @media (max-width: 500px) {
 
