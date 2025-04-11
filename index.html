@@ -437,15 +437,16 @@
                 dropdownMenu.classList.remove("show");
             }
         });
-        window.addEventListener("DOMContentLoaded", () => {
-            const mainContent = document.getElementById("main-content");
-            mainContent.style.display = "none";
+        window.addEventListener('load', function () {
+            const splashScreen = document.getElementById('splash-screen');
+
+            splashScreen.classList.add('loaded');
 
             setTimeout(() => {
-                document.getElementById("splash-screen").style.display = "none";
-                mainContent.style.display = "block";
-            }, 2700); // Match the splash animation duration
+                splashScreen.style.display = 'none';
+            }, 3000); 
         });
+
 
     </script>
 
