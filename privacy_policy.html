@@ -82,6 +82,54 @@
                 padding: 20px;
             }
         }
+
+        #chatbox {
+            width: 300px;
+            height: 400px;
+            border: 2px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            font-family: Arial;
+        }
+
+        #chat-log {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        #chat-input-area {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+        }
+
+        button {
+            border: none;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+        }
+
+        .user {
+            text-align: right;
+            margin-bottom: 5px;
+        }
+
+        .bot {
+            text-align: left;
+            margin-bottom: 5px;
+            color: gray;
+        }
     </style>
 </head>
 
@@ -134,7 +182,55 @@
             <p>If you have any questions or concerns about our privacy policy, please contact us at <a
                     href="mailto:njumechiaretto@gmail.com">support@ezybuy.com</a>.</p>
         </section>
+        <div id="chatbox">
+            <div id="chat-log"></div>
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
     </div>
 </body>
 
+<script>
+    async function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const message = input.value.trim();
+      if (!message) return;
+  
+      appendMessage("You", message, "user");
+      input.value = "";
+  
+      try {
+        const res = await fetch("https://api.freegpt4.tech/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: message }]
+          })
+        });
+  
+        const data = await res.json();
+        const reply = data.choices[0].message.content.trim();
+        appendMessage("Bot", reply, "bot");
+      } catch (err) {
+        appendMessage("Bot", "Could not reach AI service. " + err.message, "bot");
+        console.error(err);
+      }
+    }
+  
+    function appendMessage(sender, message, className) {
+      const chatLog = document.getElementById("chat-log");
+      const msg = document.createElement("div");
+      msg.className = className;
+      msg.innerHTML = `<strong>${sender}:</strong> ${message}`;
+      chatLog.appendChild(msg);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+  </script>
+  
 </html>

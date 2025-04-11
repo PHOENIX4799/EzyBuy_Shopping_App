@@ -12,7 +12,7 @@
 <body>
 
     <header class="header">
-        <a href="#" class="logo">EzyBuy</a>
+        <a href="Acounts.html" class="logo">EzyBuy</a>
 
         <div class="search-container">
             <i class='bx bx-search search-icon'></i>
@@ -39,6 +39,9 @@
             </div>
         </div>
 
+        <div id="chat-toggle-mobile" class="chat-toggle">
+            <i class='bx bxs-message'></i>
+        </div>
         <!-- Menu icon (visible on small screens) -->
         <div class="menu-icon" onclick="toggleMenu()">
             <i class='bx bx-menu'></i>
@@ -50,21 +53,33 @@
             <div id="wishlist-icon-mobile">
                 <i class='bx bxs-heart'></i>
                 <span class="wishlist-item-count"></span>
+                <span class="label">Wishlist</span>
             </div>
             <div id="cart-icon-mobile">
                 <i class='bx bxs-shopping-bags'></i>
                 <span class="cart-item-count"></span>
+                <span class="label">Cart</span>
             </div>
             <div id="orders-icon-mobile">
                 <i class='bx bxs-receipt'></i>
                 <span class="orders-item-count"></span>
-            </div>
-            <div id="chat-toggle-mobile" class="chat-toggle">
-                <i class='bx bxs-message'></i>
+                <span class="label">Orders</span>
             </div>
         </div>
     </header>
 
+    <div id="splash-screen">
+        <div class="logo-wrapper">
+            <h2 class="splash-logo">
+                <span class="letter">E</span>
+                <span class="letter">Z</span>
+                <span class="letter">Y</span>
+                <span class="letter">B</span>
+                <span class="letter">U</span>
+                <span class="letter">Y</span>
+            </h2>
+        </div>
+    </div>
 
     <div id="product-page-body">
         <div id="product-top-container">
@@ -358,7 +373,7 @@
     </div>
 
 
-    <footer>
+    <footer class="footer">
         <div id="footer-bottom">
             <p>
                 &copy; <span id="year"></span> EzyBuy. All Rights Reserved.
@@ -421,6 +436,15 @@
             if (!dropdownMenu.contains(event.target) && !menuIcon.contains(event.target)) {
                 dropdownMenu.classList.remove("show");
             }
+        });
+        window.addEventListener("DOMContentLoaded", () => {
+            const mainContent = document.getElementById("main-content");
+            mainContent.style.display = "none";
+
+            setTimeout(() => {
+                document.getElementById("splash-screen").style.display = "none";
+                mainContent.style.display = "block";
+            }, 2700); // Match the splash animation duration
         });
 
     </script>
