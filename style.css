@@ -134,10 +134,13 @@ body {
     background: linear-gradient(90deg, #464545, #c7c5c3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; 
-    animation: popScale 1.2s ease, finalTextEffect 2s ease 3.5s forwards; /* Add finalTextEffect after popScale */
+    background-clip: text;
+    color: transparent; 
+    white-space: nowrap; 
+    text-align: center;
+    width: max-content;
+    max-width: 100%;
 }
-
 @keyframes popScale {
     0% {
         transform: scale(0);
@@ -1234,12 +1237,10 @@ body {
     opacity: 1;
 }
 
-/* By default, show it */
 #chat-toggle-mobile {
     display: block;
   }
-  
-  /* Hide on large screens (e.g., 768px and up) */
+
   @media (min-width: 768px) {
     #chat-toggle-mobile {
       display: none;
