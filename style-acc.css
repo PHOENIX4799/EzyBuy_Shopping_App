@@ -1,7 +1,7 @@
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
 * {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Times New Roman", Times, serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,6 +18,7 @@
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  padding: 0 0px;
 }
 
 .container {
@@ -216,8 +217,9 @@ body {
   height: 150px; 
   overflow: hidden;
   position: relative;
-  border-radius: 30px;
-  background: #bebebe;
+  background: #ffffff;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .slide-wrapper {
@@ -230,15 +232,15 @@ body {
   width: 100%;
   height: 150px; 
   background: #bebebe;
-  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-family: Arial, sans-serif;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .details {

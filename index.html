@@ -70,14 +70,18 @@
 
     <div id="splash-screen">
         <div class="logo-wrapper">
-            <h2 class="splash-logo">
-                <span class="letter">E</span>
-                <span class="letter">Z</span>
-                <span class="letter">Y</span>
-                <span class="letter">B</span>
-                <span class="letter">U</span>
-                <span class="letter">Y</span>
-            </h2>
+            <svg class="splash-logo" viewBox="0 0 600 100" width="100%" height="100">
+                <defs>
+                    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#464545" />
+                        <stop offset="100%" stop-color="#c7c5c3" />
+                    </linearGradient>
+                </defs>
+                <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" fill="url(#text-gradient)"
+                    font-size="60" font-family="Times New Roman" class="animated-text">
+                    EZYBUY
+                </text>
+            </svg>
         </div>
     </div>
 
@@ -266,7 +270,7 @@
 
     <div id="payment-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <span class="close-modal" onclick="closeModal()"><i class='bx bx-x-circle'></i></span>
             <h2>Select Payment Method</h2>
             <div class="payment-options">
                 <label for="payment-method-select">Payment Method:</label>
@@ -444,7 +448,7 @@
 
             setTimeout(() => {
                 splashScreen.style.display = 'none';
-            }, 3000); 
+            }, 3000);
         });
 
 
