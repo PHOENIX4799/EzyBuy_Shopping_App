@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <head>
+        <title>Login / Register</title>
+        <style>
+            body {
+                font-family: "Times New Roman", Times, serif;
+                background-color: #f4f4f4;
+                font-family: Arial, sans-serif;
+                padding: 0 20px;
+                margin: 0;
+            }
+            .wrapper {
+                max-width: 250px;
+                margin: 50px auto;
+                background: #fff;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+            
+            .wrapper h2 {
+                font-family: "Times New Roman", Times, serif;
+                margin-bottom: 20px;
+                color: #333;
+            }
+            
+            .wrapper input[type="text"],
+            .wrapper input[type="password"] {
+                width: 90%;
+                padding: 12px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: "Times New Roman", Times, serif;
+            }
+            
+            .wrapper input::placeholder {
+                color: #aaa;
+            }
+
+            .wrapper input:focus {
+                border-color: #333;
+                outline: none;
+                background-color: #f3f2f2;
+            }
+            
+            .wrapper button {
+                padding: 10px 18px;
+                margin: 10px 5px;
+                font-size: 16px;
+                background-color: #747373;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                font-family: "Times New Roman", Times, serif;
+            }
+            
+            .wrapper button:hover {
+                background-color: #555;
+            }
+            
+            .error-messages {
+                color: red;
+                list-style-type: none;
+                margin-top: 15px;
+                font-family: "Times New Roman", Times, serif;
+            }
+            .bk-btn {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 5px 10px;
+                background-color: #030a47;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-family: "Times New Roman", Times, serif;
+            }
+            </style>            
+    </head>
+
+<body>
+    <div class="wrapper">
+        <h2>Login / Register</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit" name="action" value="login">Login</button>
+            <button type="submit" name="action" value="register">Register</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="error-messages">
+            {% for msg in messages %}
+            <p>{{ msg }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <a href="http://127.0.0.1:5500/index.html" class="bk-btn">← Back to Shop</a>
+    </div>
+</body>
+
+</html>

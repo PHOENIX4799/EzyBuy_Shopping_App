@@ -64,7 +64,7 @@
         }
 
         a {
-            color: #4CAF50;
+            color: #4e50be;
             text-decoration: none;
         }
 
@@ -73,7 +73,7 @@
         }
 
         /* Responsive design for smaller screens */
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 480px) {
             .privacy-policy {
                 padding: 20px;
             }
@@ -81,6 +81,31 @@
             .content {
                 padding: 20px;
             }
+            .bk-btn{
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        .bk-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #030a47d3;
+            color: #fff;
+            padding: 10px 15px;
+            border: 2px solid #aaa;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(124, 126, 126, 0.89);
+            transition: background 0.3s, box-shadow 0.3s;
+            z-index: 9999;
+        }
+
+        .bk-btn:hover {
+            background-color: #040f703f;
+            box-shadow: 0 0 15px #ffffff55;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -134,6 +159,7 @@
             <p>If you have any questions or concerns about our privacy policy, please contact us at <a
                     href="mailto:njumechiaretto@gmail.com">support@ezybuy.com</a>.</p>
         </section>
+        <a href="http://127.0.0.1:5500/index.html" class="bk-btn">← Back to Shop</a>
 
     </div>
 </body>

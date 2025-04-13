@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            color: #000000;
+        }
+
+        .wrapper {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.589);
+            position: relative;
+        }
+        .bk-btn,
+        .log-prime {
+            background-color: #030a47;
+            color: #fff;
+            padding: 6px 12px;
+            border: 2px solid #aaa;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(124, 126, 126, 0.89);
+            transition: background 0.3s, box-shadow 0.3s;
+            margin-top: 50px;
+        }
+
+        .bk-btn:hover,
+        .log-prime:hover {
+            background-color: #040f70;
+            box-shadow: 0 0 15px #ffffff55;
+            text-decoration: none;
+        }
+
+        .wrapper h2 {
+            font-size: 16px;
+            color: #000000;
+            font-weight: 200;
+            margin-left: 20px;
+        }
+        .wrapper p a{
+            text-decoration: none;
+            color: #000000;
+            font-weight: 200;
+        }
+
+        #logout-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: grey;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #888686;
+            color: #ffffff;
+        }
+
+        #logout-button a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
+
+        #logout-button a:hover {
+            color: #e0dddd;
+        }
+
+        #logout-button:hover {
+            background: #3a3939;
+            border-color: #333;
+        }
+
+        @media screen and (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+
+            .wrapper {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            #logout-button {
+                bottom: 5px;
+                right: 5px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to EzyBuy Recommendation Center</h1>
+    <div class="wrapper">
+        {% if 'username' in session %}
+        <div id="logout-button">
+            <a href="{{ url_for('logout') }}" title="Logout">Logout</a>
+        </div>
+        <p>Hello, {{ session['username'] }} </p>
+        <h2>You can place your recommendations here,</h2>
+        <p><a href="{{ url_for('recommendations') }}">My Recommendations</a></p>
+        {% else %}
+        <a class="log-prime" href="{{ url_for('login_register') }}">Login / Register</a>
+        {% endif %}
+        {% if session.get('username') and session.get('user_id') %}
+        <p><a href="{{ url_for('admin_recommendations') }}">View Recommendations</a></p>
+        {% endif %}
+        <a href="http://127.0.0.1:5500/index.html" class="bk-btn">← Back to Shop</a>
+    </div>
+</body>
+
+</html>

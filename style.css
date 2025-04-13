@@ -202,10 +202,11 @@ body {
 }
 
 #product-top-container {
-    padding-top: 150px;
-    padding-bottom: 50px;
+    padding-top: 130px;
+    padding-bottom: 100px;
     display: flex;
     justify-content: center;
+
 }
 
 #product-top-wrapper {
@@ -246,16 +247,9 @@ body {
     line-height: 1.7;
 }
 
-.blue-button {
-    background-color: #646363;
-    color: white;
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased;
-    transition: 0.3s ease-in-out;
-}
-
-.blue-button:hover {
-    background: linear-gradient(45deg, #ffffff, #d0d2d37c, #656666ab, #989b9c17, #ee0b0b09);
+.top-buttons{
+    display: flex;
+    gap: 10px;
 }
 
 .blue-button {
@@ -271,7 +265,24 @@ body {
     cursor: pointer;
     transition: background 0.3s, box-shadow 0.3s;
     box-shadow: 0 0 10px rgba(124, 126, 126, 0.89);
+    background-color: #646363;
+    -webkit-font-smoothing: antialiased;
+}
 
+.recommend-btn{
+    position: relative;
+    display: flex;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #fff;
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(124, 126, 126, 0.89);
+    background-color: #646363;
+    -webkit-font-smoothing: antialiased;
 }
 
 .blue-button::before {
@@ -287,20 +298,24 @@ body {
     pointer-events: none;
 }
 
-.blue-button:active {
+.blue-button:active,
+.recommend-btn:active {
     transform: scale(0.95);
     box-shadow: 0 0 5px #ffffff33, 0 0 10px #6a6b6b66 inset;
 }
 
-.blue-button:hover::before {
+.blue-button:hover::before,
+.recommend-btn:hover::before {
     left: 125%;
     transition: all 0.8s ease-in-out;
 }
 
-.blue-button:hover {
+.blue-button:hover,
+.recommend-btn:hover {
     background: linear-gradient(145deg, #4b4c4d, #1a1a1a);
     box-shadow: 0 0 15px #ffffff55, 0 0 25px #5d5e5e99;
 }
+
 
 #product-top-text-section button {
     padding: 15px 45px;
@@ -389,6 +404,7 @@ body {
     width: 100%;
     transition: border-color 0.3s;
     position: relative;
+    background: #e0e0e0;
 }
 
 .search-container:focus-within,
@@ -397,23 +413,16 @@ body {
     color: #000;
 }
 
-.search-container i {
-    margin-right: 10px;
-    font-size: 18px;
-    color: #ccc;
-    border-right: 1px solid #ccc;
-}
-
 #search-bar {
     margin: 0 20px;
-    padding: 2px 12px;
-    font-size: 14px;
+    padding: 2px 8px;
+    font-size: 16px;
     border: 1px solid #e0e0e0;
     border-radius: 20px;
     outline: none;
     width: 100%;
     transition: border-color 0.3s;
-    background: #e0e0e0;
+    background: transparent;
 }
 
 #suggestions {
@@ -1630,12 +1639,6 @@ footer {
         margin-top: 20px;
     }
 
-    #product-top-text-section button {
-        padding: 14px 38px;
-        border-radius: 3px;
-        font-size: 15px
-    }
-
     #product-top-image-section {
         width: 280px;
         height: 280px;
@@ -1737,16 +1740,6 @@ footer {
     .product-text-container p {
         font-size: 14px
     }
-
-    .product-text-container .blue-button {
-        padding: 7px 8px;
-        border-radius: 3px;
-        font-size: 13px;
-        white-space: nowrap
-    }
-
-
-    /* PROMOTION SECTION */
 
     .promotion-section {
         flex-direction: column;
@@ -1917,6 +1910,26 @@ footer {
 }
 
 /* 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 */
+@media (max-width: 600px) {
+    .top-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blue-button,
+    .recommend-btn {
+        width: 90%;
+        justify-content: center;
+        margin-bottom: 10px;
+        font-size: 13px;
+        padding: 0.7rem 1.5rem;
+    }
+
+    .recommend-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+    }
+}
 
 
 .dropdown-menu {

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Recommendations</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            padding: 20px;
+        }
+
+        .rec-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+        }
+
+        .username {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .recommendation-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .recommendation-list li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .bk-btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #444;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .bk-btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .bk-btn:hover {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Recommendations</h1>
+
+    {% for username, recs in grouped_recs.items() %}
+        <div class="rec-box">
+            <div class="username">{{ username }}</div>
+            <ul class="recommendation-list">
+                {% for rec in recs %}
+                    <li>{{ rec.content }} <br><small><em>{{ rec.timestamp }}</em></small></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+
+    <button class="bk-btn"><a href="{{ url_for('index') }}">Back to Home</a></button>
+</body>
+</html>
