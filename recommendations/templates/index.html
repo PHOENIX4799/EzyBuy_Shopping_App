@@ -33,21 +33,18 @@
         }
         .bk-btn,
         .log-prime {
-            background-color: #030a47;
+            background-color: grey;
             color: #fff;
             padding: 6px 12px;
-            border: 2px solid #aaa;
             border-radius: 8px;
             text-decoration: none;
-            box-shadow: 0 0 10px rgba(124, 126, 126, 0.89);
             transition: background 0.3s, box-shadow 0.3s;
             margin-top: 50px;
         }
 
         .bk-btn:hover,
         .log-prime:hover {
-            background-color: #040f70;
-            box-shadow: 0 0 15px #ffffff55;
+            background-color: #383838;
             text-decoration: none;
         }
 
@@ -131,7 +128,7 @@
         {% if session.get('username') and session.get('user_id') %}
         <p><a href="{{ url_for('admin_recommendations') }}">View Recommendations</a></p>
         {% endif %}
-        <a href="http://127.0.0.1:5500/index_main.html" class="bk-btn">← Back to Shop</a>
+        <a href="https://phoenix4799.github.io/EzyBuy_Shopping_App/" class="bk-btn">← Back to Shop</a>
     </div>
 </body>
 
