@@ -1,135 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            font-family: "Times New Roman", Times, serif;
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #ffffff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EzyBuy Recommendation Center</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      background: linear-gradient(to right, #f0f2f5, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-        h1 {
-            color: #333;
-            text-align: center;
-        }
+    h1 {
+      color: #333;
+      margin: 40px 0 20px;
+      text-align: center;
+    }
 
-        p {
-            font-size: 18px;
-            color: #000000;
-        }
+    .wrapper {
+      background-color: #ffffff;
+      width: 90%;
+      max-width: 600px;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
 
-        .wrapper {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.589);
-            position: relative;
-        }
-        .bk-btn,
-        .log-prime {
-            background-color: grey;
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background 0.3s, box-shadow 0.3s;
-            margin-top: 50px;
-        }
+    .wrapper h2 {
+      font-size: 18px;
+      color: #444;
+      margin: 20px 0 10px;
+    }
 
-        .bk-btn:hover,
-        .log-prime:hover {
-            background-color: #383838;
-            text-decoration: none;
-        }
+    .wrapper p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 12px;
+    }
 
-        .wrapper h2 {
-            font-size: 16px;
-            color: #000000;
-            font-weight: 200;
-            margin-left: 20px;
-        }
-        .wrapper p a{
-            text-decoration: none;
-            color: #000000;
-            font-weight: 200;
-        }
+    .wrapper p a {
+      color: #0003cc;
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-        #logout-button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: grey;
-            padding: 6px 12px;
-            border-radius: 6px;
-            border: 1px solid #888686;
-            color: #ffffff;
-        }
+    .wrapper p a:hover {
+      text-decoration: underline;
+    }
 
-        #logout-button a {
-            text-decoration: none;
-            color: rgb(255, 255, 255);
-            font-weight: bold;
-        }
+    .log-prime {
+      background-color: #929090;
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
 
-        #logout-button a:hover {
-            color: #e0dddd;
-        }
+    .log-prime:hover {
+      background-color: #565657;
+    }
 
-        #logout-button:hover {
-            background: #3a3939;
-            border-color: #333;
-        }
+    .bk-btn,
+    #logout-button {
+      position: fixed;
+      bottom: 20px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: #888;
+      transition: background 0.3s ease;
+      z-index: 999;
+    }
 
-        @media screen and (max-width: 500px) {
-            body {
-                padding: 10px;
-            }
+    .bk-btn {
+      left: 20px;
+    }
 
-            .wrapper {
-                padding: 15px;
-            }
+    #logout-button {
+      right: 20px;
+    }
 
-            h1 {
-                font-size: 24px;
-            }
+    .bk-btn:hover,
+    #logout-button:hover {
+      background-color: #555;
+    }
 
-            p {
-                font-size: 16px;
-            }
+    #logout-button a {
+      color: #fff;
+      text-decoration: none;
+    }
 
-            #logout-button {
-                bottom: 5px;
-                right: 5px;
-            }
+    #logout-button a:hover {
+      color: #eaeaea;
+    }
 
-        }
-    </style>
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .wrapper {
+        padding: 20px 15px;
+        margin: 20px 10px;
+        width: 90%;
+      }
+
+      .bk-btn,
+      #logout-button {
+        padding: 8px 12px;
+        font-size: 14px;
+        bottom: 15px;
+      }
+
+      .bk-btn {
+        left: 10px;
+      }
+
+      #logout-button {
+        right: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Welcome to EzyBuy Recommendation Center</h1>
-    <div class="wrapper">
-        {% if 'username' in session %}
-        <div id="logout-button">
-            <a href="{{ url_for('logout') }}" title="Logout">Logout</a>
-        </div>
-        <p>Hello, {{ session['username'] }} </p>
-        <h2>You can place your recommendations here,</h2>
-        <p><a href="{{ url_for('recommendations') }}">My Recommendations</a></p>
-        {% else %}
-        <a class="log-prime" href="{{ url_for('login_register') }}">Login / Register</a>
-        {% endif %}
-        {% if session.get('username') and session.get('user_id') %}
-        <p><a href="{{ url_for('admin_recommendations') }}">View Recommendations</a></p>
-        {% endif %}
-        <a href="https://phoenix4799.github.io/EzyBuy_Shopping_App/" class="bk-btn">← Back to Shop</a>
-    </div>
-</body>
+  <h1>Welcome to EzyBuy Recommendation Center</h1>
+  <div class="wrapper">
+    {% if 'username' in session %}
+      <div id="logout-button">
+        <a href="{{ url_for('logout') }}" title="Logout">Logout</a>
+      </div>
+      <p>Hello, {{ session['username'] }} 😁</p>
+      <h2>You can place your recommendations here:</h2>
+      <p><a href="{{ url_for('recommendations') }}">Recommend Now</a></p>
+    {% else %}
+      <a class="log-prime" href="{{ url_for('login_register') }}">Login / Register</a>
+    {% endif %}
+    
+    {% if session.get('username') and session.get('user_id') %}
+      <p><a href="{{ url_for('admin_recommendations') }}">Admins Only</a></p>
+    {% endif %}
 
+    <a href="https://phoenix4799.github.io/EzyBuy_Shopping_App/" class="bk-btn">← Back to Shop</a>
+  </div>
+</body>
 </html>

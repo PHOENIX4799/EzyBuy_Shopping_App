@@ -90,7 +90,38 @@ def admin_recommendations():
 
     if not user or not user['is_admin']:
         conn.close()
-        return "Access Denied", 403
+        return '''
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Access Denied</title>
+                <style>
+                    body {
+                        background-color: #1e1e1e;
+                        color: #f54242;
+                        font-family: Arial, sans-serif;
+                        text-align: center;
+                        padding-top: 100px;
+                    }
+                    .message {
+                        background: #2b2b2b;
+                        padding: 30px;
+                        border-radius: 10px;
+                        display: inline-block;
+                        box-shadow: 0 0 10px #f54242;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="message">
+                    <h1>🚫 Access Denied</h1>
+                    <p>You do not have the required permissions to view this page.</p>
+                    <a href="/" style="color: #f54242; text-decoration: underline;">Return Home</a>
+                </div>
+            </body>
+            </html>
+            ''', 403
+
 
     # Get all recommendations joined with usernames
     all_recs = conn.execute('''

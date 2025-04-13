@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +31,15 @@
             padding-left: 20px;
         }
 
-        .recommendation-list li {
+        .recommendation-list p {
             margin-bottom: 8px;
             color: #555;
+            background: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #424242;
+            border-radius: 6px;
+            font-size: 16px;
         }
 
         .bk-btn {
@@ -56,20 +63,22 @@
         }
     </style>
 </head>
+
 <body>
-    <h1>User Recommendations</h1>
+    <h1>Customer Recommendations</h1>
 
     {% for username, recs in grouped_recs.items() %}
-        <div class="rec-box">
-            <div class="username">{{ username }}</div>
-            <ul class="recommendation-list">
-                {% for rec in recs %}
-                    <li>{{ rec.content }} <br><small><em>{{ rec.timestamp }}</em></small></li>
-                {% endfor %}
-            </ul>
+    <div class="rec-box">
+        <div class="username">{{ username }}</div>
+        <div class="recommendation-list">
+            {% for rec in recs %}
+            <p>{{ rec.content }} <br><small><em>{{ rec.timestamp }}</em></small></p>
+            {% endfor %}
         </div>
+    </div>
     {% endfor %}
 
     <button class="bk-btn"><a href="{{ url_for('index') }}">Back to Home</a></button>
 </body>
+
 </html>
