@@ -43,23 +43,24 @@
         }
 
         .bk-btn {
-            margin-top: 30px;
-            padding: 10px 20px;
-            border: none;
-            background-color: #444;
-            color: white;
-            font-weight: bold;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: grey;
+            color: #fff;
+            padding: 10px 15px;
+            border: 2px solid #aaa;
             border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .bk-btn a {
-            color: white;
             text-decoration: none;
+            box-shadow: 0 0 10px rgba(124, 126, 126, 0.89);
+            transition: background 0.3s, box-shadow 0.3s;
+            z-index: 9999;
         }
 
         .bk-btn:hover {
-            background-color: #222;
+            background-color: rgb(65, 63, 63);
+            box-shadow: 0 0 15px #ffffff55;
+            text-decoration: none;
         }
     </style>
 </head>
