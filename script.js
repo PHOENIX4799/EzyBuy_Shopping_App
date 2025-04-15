@@ -352,6 +352,17 @@ const btnBuy = document.querySelector(".btn-buy");
 const paymentModal = document.getElementById("payment-modal");
 const proceedBuyButton = document.getElementById("proceed-buy");
 
+function openModal() {
+  paymentModal.style.display = "flex";
+}
+
+function closeModal() {
+  paymentModal.style.display = "none";
+}
+
+// Optional: Hide warning on load
+document.getElementById("warning-message").style.display = "none";
+
 btnBuy.addEventListener("click", () => {
   const cartBoxes = cartContent.querySelectorAll(".cart-box");
   if (cartBoxes.length === 0) {
@@ -363,22 +374,19 @@ btnBuy.addEventListener("click", () => {
 });
 
 proceedBuyButton.addEventListener("click", () => {
-  // Get form values
   const fullName = document.getElementById("full-name").value.trim();
   const phoneNumber = document.getElementById("phone-number").value.trim();
   const address = document.getElementById("address").value.trim();
   const country = document.getElementById("country").value;
   const city = document.getElementById("city").value;
 
-  // Validate fields
   if (!fullName || !phoneNumber || !address || !country || !city) {
     document.getElementById("warning-message").style.display = "block";
-    return; // Stop execution if any field is empty
+    return;
   } else {
     document.getElementById("warning-message").style.display = "none";
   }
 
-  // Existing purchase logic
   const cartBoxes = Array.from(cartContent.querySelectorAll(".cart-box"));
   let orderItems = [];
   let orderTotal = 0;
@@ -400,17 +408,16 @@ proceedBuyButton.addEventListener("click", () => {
   };
 
   ordersData.push(order);
-
   cartBoxes.forEach(cartBox => cartBox.remove());
   cartItemCount = 0;
   updateCartCount(0);
   updateTotalPrice();
-
   closeModal();
   showCartMessage("Thanks for shopping! Your order has been placed.");
-
   renderOrdersList();
 });
+
+
 
 // --- Chat Widget Functionality ---
 const autoResponses = [
