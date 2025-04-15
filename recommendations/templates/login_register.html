@@ -16,6 +16,7 @@
                 padding: 0 20px;
                 margin: 0;
             }
+
             .wrapper {
                 max-width: 250px;
                 margin: 50px auto;
@@ -26,13 +27,13 @@
                 font-family: Arial, sans-serif;
                 text-align: center;
             }
-            
+
             .wrapper h2 {
                 font-family: "Times New Roman", Times, serif;
                 margin-bottom: 20px;
                 color: #333;
             }
-            
+
             .wrapper input[type="text"],
             .wrapper input[type="password"] {
                 width: 90%;
@@ -43,7 +44,7 @@
                 font-size: 16px;
                 font-family: "Times New Roman", Times, serif;
             }
-            
+
             .wrapper input::placeholder {
                 color: #aaa;
             }
@@ -53,7 +54,7 @@
                 outline: none;
                 background-color: #f3f2f2;
             }
-            
+
             .wrapper button {
                 padding: 10px 18px;
                 margin: 10px 5px;
@@ -66,17 +67,18 @@
                 transition: background-color 0.3s ease;
                 font-family: "Times New Roman", Times, serif;
             }
-            
+
             .wrapper button:hover {
                 background-color: #555;
             }
-            
+
             .error-messages {
                 color: red;
                 list-style-type: none;
                 margin-top: 15px;
                 font-family: "Times New Roman", Times, serif;
             }
+
             .bk-btn {
                 display: inline-block;
                 margin-top: 20px;
@@ -87,7 +89,7 @@
                 border-radius: 5px;
                 font-family: "Times New Roman", Times, serif;
             }
-            </style>            
+        </style>
     </head>
 
 <body>
@@ -100,15 +102,20 @@
             <button type="submit" name="action" value="register">Register</button>
         </form>
 
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="error-messages">
-            {% for msg in messages %}
-            <p>{{ msg }}</p>
-            {% endfor %}
-        </div>
-        {% endif %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'registration_success' %}
+                        <p style="color: green; font-family: 'Times New Roman', Times, serif;">{{ message }}</p>
+                    {% else %}
+                        <div class="error-messages">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         {% endwith %}
+
         <a href="https://phoenix4799.github.io/EzyBuy_Shopping_App/" class="bk-btn">← Back to Shop</a>
     </div>
 </body>
