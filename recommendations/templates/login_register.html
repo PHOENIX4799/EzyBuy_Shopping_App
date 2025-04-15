@@ -106,7 +106,9 @@
             {% if messages %}
                 {% for category, message in messages %}
                     {% if category == 'registration_success' %}
-                        <p style="color: green; font-family: 'Times New Roman', Times, serif;">{{ message }}</p>
+                        <p style="color: green; font-weight: bold; font-family: 'Times New Roman', Times, serif; margin-top: 15px;">
+                           {{ message }}
+                        </p>
                     {% else %}
                         <div class="error-messages">
                             <p>{{ message }}</p>
@@ -115,6 +117,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
 
         <a href="https://phoenix4799.github.io/EzyBuy_Shopping_App/" class="bk-btn">← Back to Shop</a>
     </div>
