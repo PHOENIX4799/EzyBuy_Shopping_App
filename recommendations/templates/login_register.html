@@ -106,12 +106,12 @@
             {% if messages %}
                 {% for category, message in messages %}
                     {% if category == 'registration_success' %}
-                        <p style="color: green; font-weight: bold; font-family: 'Times New Roman', Times, serif; margin-top: 15px;">
-                           {{ message }}
-                        </p>
-                    {% else %}
-                        <div class="error-messages">
-                            <p>{{ message }}</p>
+                        <div style="color: green; font-weight: bold; font-family: 'Times New Roman', Times, serif; margin-top: 15px;">
+                            {{ message }}
+                        </div>
+                        {% else %}
+                        <div style="color: red; font-family: 'Times New Roman', Times, serif; margin-top: 15px;">
+                            {{ message }}
                         </div>
                     {% endif %}
                 {% endfor %}
