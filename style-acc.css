@@ -23,13 +23,13 @@ body {
 
 .container {
   position: relative;
-  width: 100%;
+  width: 90%;
 }
 
 /* =============== Navigation ================ */
 .navigation {
   position: fixed;
-  width: 300px;
+  width: 100px;
   height: 100%;
   background: linear-gradient(60deg, #1f1e1e,#747272, #cecece);
   border-left: 10px solid var(--blue);
@@ -37,7 +37,7 @@ body {
   overflow: hidden;
 }
 .navigation.active {
-  width: 80px;
+  width: 70px;
 }
 
 .navigation ul {
@@ -92,7 +92,7 @@ body {
   margin-top: 6px;
 }
 .navigation ul li a .icon i {
-  font-size: 1.75rem;
+  font-size: 20px;
 }
 
 .navigation ul li a .title {
@@ -134,19 +134,19 @@ body {
 
 .main {
   position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
+  width: calc(100% - 200px);
+  left: 200px;
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
 }
 .main.active {
-  width: calc(100% - 80px);
-  left: 80px;
+  width: calc(100% - 70px);
+  left: 70px;
 }
 
 .topbar {
-  width: 100%;
+  width: 90%;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -418,18 +418,18 @@ body {
 
 @media (max-width: 991px) {
   .navigation {
-    left: -300px;
+    left: -200px;
   }
   .navigation.active {
-    width: 300px;
+    width: 200px;
     left: 0;
   }
   .main {
-    width: 100%;
+    width: 90%;
     left: 0;
   }
   .main.active {
-    left: 300px;
+    left: 200px;
   }
   .cardBox {
     grid-template-columns: repeat(2, 1fr);
@@ -459,21 +459,22 @@ body {
     min-width: 40px;
   }
   .navigation {
-    width: 100%;
-    left: -100%;
+    width: 90%;
+    left: -90%;
     z-index: 1000;
   }
   .navigation.active {
-    width: 100%;
+    width: 90%;
     left: 0;
   }
   .toggle {
     z-index: 10001;
   }
   .main.active .toggle {
-    color: #fff;
+    color: #000000;
     position: fixed;
-    right: 0;
-    left: initial;
+    left: 250px;
+    transition: 1s;
   }
+  
 }

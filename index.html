@@ -205,91 +205,6 @@
         </div>
     </div>
 
-    <div id="chat-widget" class="chat-widget">
-        <div class="chat-header">
-            <h3>Live Chat </h3>
-            <span id="whatsapp-icon" title="Chat with us on WhatsApp">
-                <i class='bx bxl-whatsapp'></i>
-            </span>
-            <span id="chat-close" class="chat-close"><i class='bx bx-x-circle'></i></span>
-        </div>
-
-        <div class="chat-body" id="chat-body">
-            <!-- Chat messages -->
-        </div>
-
-        <div class="chat-footer">
-            <input type="text" id="chat-input" placeholder="Type or Chat on Whatsapp..." />
-            <button id="chat-send">Send</button>
-        </div>
-    </div>
-
-    <div class="orders" id="orders">
-        <h2 class="orders-title">Orders</h2>
-        <div class="orders-info">
-            <p id="order-date"></p>
-            <p id="order-time"></p>
-        </div>
-        <div class="orders-list"></div>
-        <i class='bx bx-x-circle' id="orders-close"></i>
-    </div>
-
-
-    <div class="cart">
-        <h2 class="cart-title">Your Cart</h2>
-        <div class="cart-content">
-            <!-- <div class="cart-box">
-                <img src="/images/blender.png" class="cart-img">
-                <div class="cart-detail">
-                    <h2 class="cart-product-title">Try Product</h2>
-                    <span class="cart-price">$100</span>
-                    <div class="cart-quantity">
-                        <button id="decrement">-</button>
-                        <span class="number">1</span>
-                        <button id="increment">+</button>
-                    </div>
-                </div>
-                <i class='bx bx-trash' ></i>
-            </div> -->
-        </div>
-
-        <div class="total">
-            <div class="total-title">Total</div>
-            <div class="total-price">$0</div>
-        </div>
-        <button class="btn-buy">Buy Now</button>
-        <div id="cart-alert" class="cart-alert">
-            <span class="close-btn" onclick="closeAlert()"><i class='bx bx-x'></i></span>
-            <span id="cart-alert-message"></span>
-        </div>
-        <i class='bx bx-x-circle' id="cart-close"></i>
-    </div>
-
-    <div class="wishlist" id="wishlist">
-        <h2 class="wishlist-title">Your Wishlist</h2>
-        <div class="wishlist-content">
-            <!-- Wishlist items -->
-        </div>
-        <i class='bx bx-x-circle' id="wishlist-close"></i>
-    </div>
-
-
-    <div id="payment-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()"><i class='bx bx-x-circle'></i></span>
-            <h2>Select Payment Method</h2>
-            <div class="payment-options">
-                <label for="payment-method-select">Payment Method:</label>
-                <select id="payment-method-select">
-                    <option value="credit-card">Credit Card</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="bank-transfer">Bank Transfer</option>
-                </select>
-            </div>
-            <button id="proceed-buy" class="btn-buy">Proceed to Buy</button>
-        </div>
-
-    </div>
     <div class="sliders">
         <div id="product-text">
             <span class="side-line"></span>
@@ -382,6 +297,116 @@
         </div>
     </div>
 
+    <div class="cart">
+        <h2 class="cart-title">Your Cart</h2>
+        <div class="cart-content">
+            <!-- <div class="cart-box">
+                <img src="/images/blender.png" class="cart-img">
+                <div class="cart-detail">
+                    <h2 class="cart-product-title">Try Product</h2>
+                    <span class="cart-price">$100</span>
+                    <div class="cart-quantity">
+                        <button id="decrement">-</button>
+                        <span class="number">1</span>
+                        <button id="increment">+</button>
+                    </div>
+                </div>
+                <i class='bx bx-trash' ></i>
+            </div> -->
+        </div>
+
+        <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+        </div>
+        <button class="btn-buy">Buy Now</button>
+        <div id="cart-alert" class="cart-alert">
+            <span class="close-btn" onclick="closeAlert()"><i class='bx bx-x'></i></span>
+            <span id="cart-alert-message"></span>
+        </div>
+        <i class='bx bx-x-circle' id="cart-close"></i>
+    </div>
+
+    <div class="wishlist" id="wishlist">
+        <h2 class="wishlist-title">Your Wishlist</h2>
+        <div class="wishlist-content">
+            <!-- Wishlist items -->
+        </div>
+        <i class='bx bx-x-circle' id="wishlist-close"></i>
+    </div>
+
+    <div class="orders" id="orders">
+        <h2 class="orders-title">Orders</h2>
+        <div class="orders-info">
+            <p id="order-date"></p>
+            <p id="order-time"></p>
+        </div>
+        <div class="orders-list"></div>
+        <i class='bx bx-x-circle' id="orders-close"></i>
+    </div>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()"><i class='bx bx-x-circle'></i></span>
+            <h2>Proceed To Checkout</h2>
+            <div class="user-details">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+
+                <label for="phone-number">Phone Number:</label>
+                <input type="tel" id="phone-number" name="phone-number" placeholder="Enter your phone number" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+                <div class="location-fields">
+                    <div class="input-group">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="Enter your country" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="payment-options">
+                <label for="payment-method-select">Payment Method:</label>
+                <select id="payment-method-select">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bank-transfer">Bank Transfer</option>
+                </select>
+            </div>
+            <button id="proceed-buy" class="btn-buy">Proceed to Buy</button>
+
+            <div id="warning-message">
+                <p>🚫Please fill out all fields before proceeding.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-header">
+            <h3>Live Chat </h3>
+            <span id="whatsapp-icon" title="Chat with us on WhatsApp">
+                <i class='bx bxl-whatsapp'></i>
+            </span>
+            <span id="chat-close" class="chat-close"><i class='bx bx-x-circle'></i></span>
+        </div>
+
+        <div class="chat-body" id="chat-body">
+            <!-- Chat messages -->
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type or Chat on Whatsapp..." />
+            <button id="chat-send">Send</button>
+        </div>
+    </div>
 
     <footer class="footer">
         <div id="footer-bottom">
@@ -456,8 +481,6 @@
                 splashScreen.style.display = 'none';
             }, 3000);
         });
-
-
     </script>
 
 </body>

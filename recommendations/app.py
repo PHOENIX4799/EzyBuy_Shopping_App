@@ -33,7 +33,7 @@ def login_register():
                 hashed_password = generate_password_hash(password)
                 cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
                 conn.commit()
-                flash('Registration successful! Please log in.')
+                flash('Registration successful! Please log in.', 'success')
             except sqlite3.IntegrityError:
                 flash('Username already taken.')
         elif action == 'login':
@@ -42,7 +42,7 @@ def login_register():
             if user and check_password_hash(user['password'], password):
                 session['user_id'] = user['id']
                 session['username'] = user['username']
-                flash('Logged in successfully.')
+                flash('Logged in successfully.', 'success')
                 return redirect(url_for('recommendations'))
             else:
                 flash('Invalid credentials.')

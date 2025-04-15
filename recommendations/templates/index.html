@@ -45,7 +45,13 @@
     }
 
     .wrapper p a {
-      color: #0003cc;
+      color: #020e29;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .wrapper p .admin{
+      color: #570202;
       text-decoration: none;
       font-weight: 600;
     }
@@ -151,7 +157,7 @@
     {% endif %}
     
     {% if session.get('username') and session.get('user_id') %}
-      <p><a href="{{ url_for('admin_recommendations') }}">Admins Only</a></p>
+      <p><a href="{{ url_for('admin_recommendations') }}" class="admin">Admins Only</a></p>
     {% endif %}
 
     <a href="https://phoenix4799.github.io/EzyBuy_Shopping_App/" class="bk-btn">← Back to Shop</a>
