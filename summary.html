@@ -15,12 +15,23 @@
             border-radius: 8px;
             max-width: 400px;
         }
+        a{
+            text-decoration: none;
+            background-color: #a7a4a4;
+            border-radius: 10px;
+            padding: 5px 10px;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            position: absolute;
+            color: #ffffff;
+        }
     </style>
-</head><a href="/">Summary</a>
+</head>
 <body>
     <h2>Order Summary</h2>
     <div class="summary-box" id="summary-container"></div>
-
+    <a href="index.html">Shop</a>
     <script>
         const data = JSON.parse(localStorage.getItem('checkoutData'));
 
@@ -37,6 +48,7 @@
             document.getElementById('summary-container').innerHTML = '<p>No data available. Please fill the form first.</p>';
         }
     </script>
+
 </body>
 
 </html>

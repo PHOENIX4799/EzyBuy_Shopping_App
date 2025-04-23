@@ -414,8 +414,8 @@
         <div id="footer-bottom">
             <p>
                 &copy; <span id="year"></span> EzyBuy. All Rights Reserved.
-                <a href="privacy_policy.html">Privacy Policy</a>
-                <a href="summary.html">Summary</a>
+                <a href="privacy_policy.html">Privacy Policy</a> |
+                <a href="summary.html" id="summary-link">Summary</a>
             </p>
         </div>
     </footer>
@@ -505,10 +505,21 @@
                 document.getElementById('warning-message').style.display = 'block';
             }
         });
-
+        document.getElementById('summary-link').addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default link navigation
+    
+            const password = "Phoenix123"; // Change this to your actual password
+            const input = prompt("Enter the password to access the summary:");
+    
+            if (input === password) {
+                window.location.href = "summary.html"; // Redirect if correct
+            } else if (input !== null) {
+                alert("Incorrect password.");
+            }
+        });
+        
     </script>
-
-
+    
 </body>
 
 </html>
