@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+        }
+        .summary-box {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            border-radius: 8px;
+            max-width: 400px;
+        }
+    </style>
+</head><a href="/">Summary</a>
+<body>
+    <h2>Order Summary</h2>
+    <div class="summary-box" id="summary-container"></div>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem('checkoutData'));
+
+        if (data) {
+            document.getElementById('summary-container').innerHTML = `
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>Address:</strong> ${data.address}</p>
+                <p><strong>Country:</strong> ${data.country}</p>
+                <p><strong>City:</strong> ${data.city}</p>
+                <p><strong>Payment:</strong> ${data.payment}</p>
+            `;
+        } else {
+            document.getElementById('summary-container').innerHTML = '<p>No data available. Please fill the form first.</p>';
+        }
+    </script>
+</body>
+
+</html>

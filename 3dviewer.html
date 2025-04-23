@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Products in 3D</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            background-image: url(/images/chat-bk3.png);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Keeps the background fixed in place */
+            font-family: "Times New Roman", Times, serif;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            /* 👈 0.4 is the dim level (increase for darker) */
+            z-index: -1;
+        }
+
+        body.dark-mode::before {
+            background: rgba(0, 0, 0, 0.767);
+            /* Darker overlay for dark mode */
+        }
+
+        body.light-mode::before {
+            background: rgba(255, 255, 255, 0.2);
+            /* Lighter overlay for light mode */
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode #product-name {
+            color: #ffffff;
+        }
+
+        body.dark-mode .controls button {
+            background-color: #444;
+            color: #fff;
+        }
+
+        body.dark-mode .controls button:hover {
+            background-color: #666;
+        }
+
+        body.dark-mode #back-button {
+            background-color: #006400;
+            color: #fff;
+        }
+
+        body.dark-mode #back-button:hover {
+            background-color: #009900;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        #product-name {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        model-viewer {
+            width: 90%;
+            max-width: 800px;
+            height: 400px;
+            background: transparent;
+            border-radius: 20px;
+            /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); */
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        model-viewer:hover {
+            transform: scale(1.01);
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .controls button {
+            margin: 0 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #007bff, #0056b3);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #back-button {
+            margin-top: 40px;
+            background: linear-gradient(to right, #28a745, #218838);
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        #back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+        @import url('https://fonts.cdnfonts.com/css/poppins');
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner .slider {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 20s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes autoRun {
+            from {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+            }
+
+            to {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+            }
+        }
+
+        .banner .slider .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d3d0d065;
+            border-radius: 10px;
+            position: absolute;
+            inset: 0 0 0 0;
+            transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+        }
+
+        .banner .slider .item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .banner .content {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1400px, 100vw);
+            height: max-content;
+            padding-bottom: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .banner .content h1 {
+            font-family: 'ICA Rubrik';
+            font-size: 16em;
+            line-height: 1em;
+            color: #25283B;
+            position: relative;
+        }
+
+        .banner .content h1::after {
+            position: absolute;
+            inset: 0 0 0 0;
+            content: attr(data-content);
+            z-index: 2;
+            -webkit-text-stroke: 2px #d2d2d2;
+            color: transparent;
+        }
+
+        .banner .content .author {
+            font-family: Poppins;
+            text-align: right;
+            max-width: 200px;
+        }
+
+        .banner .content h2 {
+            font-size: 3em;
+        }
+
+        @media screen and (max-width: 1023px) {
+            .banner .slider {
+                width: 160px;
+                height: 200px;
+                left: calc(50% - 80px);
+            }
+
+            .banner .slider .item {
+                transform:
+                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+            }
+
+            .banner .content h1 {
+                text-align: center;
+                width: 100%;
+                text-shadow: 0 10px 20px #000;
+                font-size: 7em;
+            }
+
+            .banner .content .author {
+                color: #fff;
+                padding: 20px;
+                text-shadow: 0 10px 20px #000;
+                z-index: 2;
+                max-width: unset;
+                width: 100%;
+                text-align: center;
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .banner .slider {
+                width: 100px;
+                height: 150px;
+                left: calc(50% - 50px);
+            }
+
+            .banner .slider .item {
+                transform:
+                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+            }
+
+            .banner .content h1 {
+                font-size: 5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 10000;">
+            🌞 Toggle Theme
+        </button>
+    </header>
+
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="images/\A1.png" alt=""></div>
+            <div class="item" style="--position: 2"><img src="images/\W2.png" alt=""></div>
+            <div class="item" style="--position: 3"><img src="images/\T3.png" alt=""></div>
+            <div class="item" style="--position: 4"><img src="images/\A4.png" alt=""></div>
+            <div class="item" style="--position: 5"><img src="images/\W5.png" alt=""></div>
+            <div class="item" style="--position: 6"><img src="images/\A6.png" alt=""></div>
+            <div class="item" style="--position: 7"><img src="images/\T7.png" alt=""></div>
+            <div class="item" style="--position: 8"><img src="images/\Iphone 11.png" alt=""></div>
+            <div class="item" style="--position: 9"><img src="images/\W9.png" alt=""></div>
+            <div class="item" style="--position: 10"><img src="images/\A10.png" alt=""></div>
+        </div>
+        <div class="content">
+            <div class="model"></div>
+        </div>
+    </div>
+
+    <h1>🔄 Explore Products in 3D</h1>
+    <div id="product-name">Loading...</div>
+
+    <model-viewer id="viewer" src="" alt="A 3D model" auto-rotate auto-rotate-delay="0" camera-controls ar
+        ar-modes="webxr scene-viewer quick-look" shadow-intensity="2" shadow-softness="0.9" environment-image="neutral"
+        exposure="1.0">
+    </model-viewer>
+
+    <div class="controls">
+        <button onclick="prevModel()"> ◀ </button>
+        <button onclick="nextModel()"> ▶ </button>
+    </div>
+
+    <div>
+        <button id="back-button" onclick="window.location.href='index.html'">⬅ Back to Shop</button>
+    </div>
+
+    <script>
+
+        const products = [
+            {
+                name: "Damaged Helmet",
+                modelUrl: "images/Damaged_Helmet.glb"  // Local file path
+            },
+            {
+                name: "BoomBox",
+                modelUrl: "images/BoomBox.glb"  // Local file path
+            },
+            {
+                name: "Futuristic Racer",
+                modelUrl: "images/Futuristic_Racer.glb"  // Replace with your downloaded file
+            },
+            {
+                name: "Caesum man",
+                modelUrl: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/CesiumMan/glTF-Binary/CesiumMan.glb"  // Replace with your downloaded file
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function loadModel(index) {
+            const viewer = document.getElementById('viewer');
+            const productName = document.getElementById('product-name');
+            viewer.src = products[index].modelUrl;
+            productName.innerText = products[index].name;
+        }
+
+        function nextModel() {
+            currentIndex = (currentIndex + 1) % products.length;
+            loadModel(currentIndex);
+        }
+
+        function prevModel() {
+            currentIndex = (currentIndex - 1 + products.length) % products.length;
+            loadModel(currentIndex);
+        }
+
+        const viewer = document.querySelector('model-viewer');
+
+        viewer.addEventListener('load', () => {
+            viewer.setAttribute('auto-rotate', true);
+            viewer.setAttribute('auto-rotate-delay', '0');
+            viewer[$modelViewerInternals]?.controls?.setAutoRotateSpeed(2.5); // 2.5x speed
+        });
+
+        // Load first model when page loads
+        window.onload = () => loadModel(currentIndex);
+
+        const toggleBtn = document.getElementById('theme-toggle');
+
+        // Load theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.add(`${savedTheme}-mode`);
+
+        toggleBtn.addEventListener('click', () => {
+            const isLight = document.body.classList.contains('light-mode');
+            document.body.classList.toggle('light-mode', !isLight);
+            document.body.classList.toggle('dark-mode', isLight);
+
+            // Save the user's preference
+            localStorage.setItem('theme', isLight ? 'dark' : 'light');
+
+            // Optional: Update button emoji
+            toggleBtn.textContent = isLight ? ' Toggle Theme' : '🌞 Toggle Theme';
+        });
+    </script>
+
+</body>
+
+</html>

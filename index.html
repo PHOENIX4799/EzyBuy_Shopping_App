@@ -104,6 +104,7 @@
                             onclick="window.location.href='https://ezybuy-shopping-app.onrender.com';">
                             Recommend Something
                         </button>
+                        <a href="3dviewer.html" class="recommend-btn">Explore Products in 3D</a>
                     </div>
                 </div>
                 <div id="product-top-image-section">
@@ -376,10 +377,11 @@
                 <select id="payment-method-select">
                     <option value="credit-card">Credit Card</option>
                     <option value="paypal">PayPal</option>
-                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="bank-transfer">Cash In Hand</option>
                 </select>
             </div>
             <button id="proceed-buy" class="btn-buy">Proceed to Buy</button>
+            <button id="save-info" class="btn-buy">Save</button>
 
             <div id="warning-message">
                 <p>🚫Please fill out all fields before proceeding.</p>
@@ -413,6 +415,7 @@
             <p>
                 &copy; <span id="year"></span> EzyBuy. All Rights Reserved.
                 <a href="privacy_policy.html">Privacy Policy</a>
+                <a href="summary.html">Summary</a>
             </p>
         </div>
     </footer>
@@ -474,14 +477,37 @@
         });
         window.addEventListener('load', function () {
             const splashScreen = document.getElementById('splash-screen');
-
-            splashScreen.classList.add('loaded');
-
-            setTimeout(() => {
+            if (!localStorage.getItem('animationPlayed')) {
+                splashScreen.classList.add('loaded');
+                localStorage.setItem('animationPlayed', 'true');
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 3000);
+            } else {
                 splashScreen.style.display = 'none';
-            }, 3000);
+            }
         });
+        document.getElementById('save-info').addEventListener('click', function () {
+            const userData = {
+                name: document.getElementById('full-name').value,
+                phone: document.getElementById('phone-number').value,
+                address: document.getElementById('address').value,
+                country: document.getElementById('country').value,
+                city: document.getElementById('city').value,
+                payment: document.getElementById('payment-method-select').value
+            };
+
+            if (Object.values(userData).every(val => val.trim() !== '')) {
+                localStorage.setItem('checkoutData', JSON.stringify(userData));
+                alert("Information saved successfully!");
+                document.getElementById('warning-message').style.display = 'none';
+            } else {
+                document.getElementById('warning-message').style.display = 'block';
+            }
+        });
+
     </script>
+
 
 </body>
 

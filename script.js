@@ -543,7 +543,7 @@ const chatInput = document.getElementById("chat-input");
 const chatSend = document.getElementById("chat-send");
 const chatBody = document.getElementById("chat-body");
 const chatToggle = document.getElementById("chat-toggle");
-const helpMessage = "<div style='padding: 10px; border-left: 4px solid #25D366; background: #f1f1f1; border-radius: 5px;'>" +
+const helpMessage = "<div style='padding: 10px; border-left: 4px solid #25D366; background:rgb(238, 238, 238); border-radius: 5px;'>" +
   "<strong>🔹 How to Use the Chat Box:</strong><br><br>" +
   "✅ <strong>Track Order:</strong> Type <code>how can i track my order?</code> to check your order status.<br>" +
   "✅ <strong>Return a Product:</strong> Type <code>return product</code> to get return policy details.<br>" +
@@ -565,7 +565,7 @@ chatToggle.addEventListener("click", () => {
 
   if (!chatWidget.dataset.helpDisplayed) {
     addChatMessage("Support", helpMessage, true);
-    chatWidget.dataset.helpDisplayed = "true"; // Mark as displayed
+    chatWidget.dataset.helpDisplayed = "true";
   }
 });
 
@@ -664,3 +664,4 @@ function showSuggestions() {
 
   suggestionsDiv.style.display = matchCount === 0 ? "none" : "block";
 }
+
