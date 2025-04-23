@@ -25,7 +25,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
     font-family: "Times New Roman", Times, serif;
 }
 
@@ -1492,6 +1492,9 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
+    body {
+        background-attachment: fixed;
+    }
     header {
         padding: 15px 5%;
     }
