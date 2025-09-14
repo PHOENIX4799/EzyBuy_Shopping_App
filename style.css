@@ -221,7 +221,7 @@ body {
 }
 
 #product-top-wrapper {
-    background-color: red; /* Dim + light grey tint */
+    background-color: light-grey; /* Dim + light grey tint */
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     width: 100%;
